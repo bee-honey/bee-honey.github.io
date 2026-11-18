@@ -56,5 +56,19 @@
     items.forEach((el) => { el.classList.add('reveal'); reveal.observe(el); });
   }
 
+  // Screenshot gallery (only loads images when opened)
+  const dlg = document.querySelector('.gallery');
+  const shots = dlg.querySelector('.gallery-shots');
+  document.querySelectorAll('.shots-btn').forEach((btn) => btn.addEventListener('click', () => {
+    const { app, title, alts } = btn.dataset;
+    dlg.querySelector('#gallery-title').textContent = title;
+    shots.innerHTML = alts.split('|').map((alt, i) =>
+      `<figure><img src="assets/apps/${app}-${i + 1}.jpg" alt="${alt}"><figcaption>${alt}</figcaption></figure>`).join('');
+    dlg.showModal();
+    shots.scrollLeft = 0;
+  }));
+  dlg.querySelector('.gallery-close').addEventListener('click', () => dlg.close());
+  dlg.addEventListener('click', (e) => { if (e.target === dlg) dlg.close(); });
+
   document.getElementById('year').textContent = new Date().getFullYear();
 })();

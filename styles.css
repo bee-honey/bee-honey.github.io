@@ -247,7 +247,8 @@ ul, ol { margin: 0; padding: 0; }
 }
 
 /* SKILLS */
-.skills { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 320px), 1fr)); gap: 16px; }
+.skills { columns: 3 300px; column-gap: 16px; }
+.skills .skill-group { break-inside: avoid; margin-bottom: 16px; }
 .skill-group { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 22px; }
 .skill-group h3 { font-size: 15px; margin-bottom: 14px; }
 .skill-group .chips li { font-size: 12.5px; }
